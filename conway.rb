@@ -47,6 +47,7 @@ class HelloWorldWindow < FXMainWindow
     clear_btn = GameButton.new(hframe, '', :opts => BUTTON_NORMAL|LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT, :width => 40, :height => 40)
     clear_btn.backColor = "blue"
     clear_btn.text = "Clear"
+    clear_btn.textColor = "white"
     clear_btn.connect(SEL_COMMAND)do
     clear
     end
