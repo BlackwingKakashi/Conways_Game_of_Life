@@ -24,13 +24,6 @@ class HelloWorldWindow < FXMainWindow
       end
     end
 
-    step_btn = FXButton.new(hframe, '', :opts => BUTTON_NORMAL|LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT, :width => 40, :height => 40)
-    step_btn.text = "Step"
-    step_btn.backColor = "Yellow"
-    step_btn.connect(SEL_COMMAND) do
-      step
-    end
-
     start_btn = FXButton.new(hframe, '', :opts => BUTTON_NORMAL|LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT, :width => 40, :height => 40)
     start_btn.text = "Start"
     start_btn.backColor = "Green"
@@ -42,6 +35,20 @@ class HelloWorldWindow < FXMainWindow
         start_btn.text = "Start"
         start_btn.backColor = "Green"
       end
+    end
+
+    step_btn = FXButton.new(hframe, '', :opts => BUTTON_NORMAL|LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT, :width => 40, :height => 40)
+    step_btn.text = "Step"
+    step_btn.backColor = "Yellow"
+    step_btn.connect(SEL_COMMAND) do
+      step
+    end
+
+    clear_btn = GameButton.new(hframe, '', :opts => BUTTON_NORMAL|LAYOUT_FIX_WIDTH|LAYOUT_FIX_HEIGHT, :width => 40, :height => 40)
+    clear_btn.backColor = "blue"
+    clear_btn.text = "Clear"
+    clear_btn.connect(SEL_COMMAND)do
+    clear
     end
 
       app.addTimeout(500, :repeat => true) do
@@ -160,6 +167,16 @@ class HelloWorldWindow < FXMainWindow
           currentsquare.backColor = currentsquare.nextColor
           currentsquare.nextColor = nil
         end
+      end
+    end
+  end
+
+  def clear
+    20.times do |currentrow|
+      20.times do |currentcolumn|
+        currentsquare = @mtx.childAtRowCol(currentrow, currentcolumn)
+        currentsquare.backColor = 4294967295
+        currentsquare.nextColor = nil
       end
     end
   end
